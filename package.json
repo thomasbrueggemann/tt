@@ -2,8 +2,9 @@
   "name": "tt",
   "version": "1.0.0",
   "description": "CLI to Translate a string and display Thesaurus results for it",
-  "main": "tt.js",
+  "main": "index.js",
   "scripts": {
+	"start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,9 +19,7 @@
   "homepage": "https://github.com/thomasbrueggemann/tt#readme",
   "dependencies": {
     "dictcc-js": "^1.0.0",
+    "restify": "^4.3.0",
     "thesaurus-com": "^1.1.3"
-  },
-  "bin": {
-	"tt": "tt.js"
-  },
+  }
 }
