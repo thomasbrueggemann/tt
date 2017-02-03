@@ -167,6 +167,8 @@
 
 					$("#s").prop("disabled", false);
 					$("#loading").show();
+					$("#translationsResult").empty();
+					$("#thesaurusResult").empty();
 
 					// search stuff
 					$.get("https://tt.thomasbrueggemann.com/" + $("#s").val(), function(result) {
