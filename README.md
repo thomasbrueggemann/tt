@@ -1,2 +1,5 @@
-# tt
-Translate a string and display Thesaurus results for it
+# 📚 Translate&Thesaurus
+
+Make writing papers great again!
+
+➡️ https://thomasbrueggemann.github.io/tt/
