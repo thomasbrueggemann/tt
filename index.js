@@ -7,8 +7,10 @@ var server = restify.createServer();
 
 server.get("/:word", function(req, res, next) {
 
+	console.log(req.params.word);
+
 	// translate
-	dictcc.translate("en", "de", req.params.word, function(response, err) {
+	dictcc.translate("en", "de", encodeURIComponent(req.params.word), function(response, err) {
 
 		res.setHeader("Content-Type", "application/json");
 		res.setHeader("Access-Control-Allow-Origin", "*");
