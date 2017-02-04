@@ -143,8 +143,8 @@
 		<table class="table table-striped table-condensed">
 		{{#translate}}
 			<tr>
-				<td>{{from}}</td>
-				<td>{{to}}</td>
+				<td>{{&from}}</td>
+				<td>{{&to}}</td>
 			</tr>
 		{{/translate}}
 		</table>
@@ -153,7 +153,7 @@
 	<script type="text/template" id="thesaurusTpl">
 		<h2>Thesaurus</h2>
 		{{#thesaurus.synonyms}}
-			<span class="label label-warning label-thesaurus" onclick="$(this).selectText()">{{.}}</span>
+			<span class="label label-warning label-thesaurus mark-it">{{.}}</span>
 		{{/thesaurus.synonyms}}
 	</script>
 
@@ -179,6 +179,13 @@
 
 		$(function() {
 
+			// MARK IT
+			function markIt(a) {
+				var position = a.indexOf(" {");
+				if(position > -1) return "<span class=\"mark-it\">" + a.substr(0, position) + "</span>" + a.substr(position);
+				else return "<span class=\"mark-it\">" + a + "</span>";
+			}
+
 			// SEARCH
 			function search(word) {
 
@@ -192,6 +199,14 @@
 
 					$("#s").prop("disabled", false);
 					$("#loading").hide();
+
+					// prepare the results a bit for mark-it script
+					result.translate = result.translate.map(function(item) {
+
+						item.from = markIt(item.from);
+						item.to = markIt(item.to);
+						return item;
+					});
 
 					// render results
 					$("#translationsResult").html(Mustache.render($("#translationsTpl").html(), result));
@@ -216,6 +231,10 @@
 				var $this = $(e.target);
 				$("#s").val($this.text());
 				search($this.text());
+			});
+
+			$(document).on("click", ".mark-it", function(e) {
+				$(e.target).selectText();
 			});
 		});
 	</script>
