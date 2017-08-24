@@ -152,10 +152,15 @@
 	</script>
 
 	<script type="text/template" id="thesaurusTpl">
-		<h2>Thesaurus</h2>
+		<h2>Thesaurus - Synonyms</h2>
 		{{#thesaurus.synonyms}}
-			<span class="label label-warning label-thesaurus mark-it">{{.}}</span>
+		<span class="label label-warning label-thesaurus mark-it">{{.}}</span>
 		{{/thesaurus.synonyms}}
+
+		<h2>Thesaurus - Antonyms</h2>
+		{{#thesaurus.antonyms}}
+		<span class="label label-info label-thesaurus mark-it">{{.}}</span>
+		{{/thesaurus.antonyms}}
 	</script>
 
 	<!-- SCRIPTS -->
